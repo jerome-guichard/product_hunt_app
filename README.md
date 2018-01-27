@@ -9,7 +9,7 @@ This application displays all the posts posted on Product Hunt.
 
 ### Git
 
-- A good place to learn about setting up git is [here][git-setup].
+- Install git
 
 ### Node.js and Tools
 
