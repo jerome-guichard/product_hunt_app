@@ -3,6 +3,7 @@ Product Hunt Application
 
 ## Overview
 
+This application displays all the posts posted on Product Hunt.
 
 ## Prerequisites
 
