@@ -4,21 +4,39 @@
     <meta charset="utf-8">
     <title>Product Hunt Posts</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="app.animations.css" />
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
     
+    <script src="core/core.module.js"></script>
+    
+    <script src="core/post/post.module.js"></script>
+    <script src="core/post/post.service.js"></script>
+        
+    <script src="post-list/post-list.module.js"></script>
+    <script src="post-list/post-list.component.js"></script>
+    
   </head>
   <body>
+   <header class="header-php">
+    <div class="container">
+        <a class="" href="https://www.producthunt.com">
+            <h1 class="header-php">PHP : Product Hunt Posts</h1>
+        </a>      
+        <a class="header-php-link" href="https://www.producthunt.com">Product Hunter</a>
+    </div>
+  </header>
 
     <div class="view-container">
       <div ng-view class="view-frame"></div>
-      <p> Let's develop ! </p>
     </div>
 
   </body>
