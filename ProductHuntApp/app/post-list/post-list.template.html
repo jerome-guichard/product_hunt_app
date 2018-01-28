@@ -1,43 +1,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4">
-      <!--Sidebar content-->
-      <div class="inputs">
-        <!--<p>
-          Categories:
-          <select ng-model="daysAgo">
-            <option value="0" selected>Tech</option>
-            <option value="1">1 day ago</option>
-            <option value="2">2 days ago</option>
-            <option value="3">3 days ago</option>
-            <option value="4">4 days ago</option>
-            <option value="5">5 days ago</option>
-            <option value="6">6 days ago</option>
-          </select>
-        </p>-->
-
-        <p>
-          Days ago:
-          <select ng-model="daysAgo" ng-change="update()">
-            <option value="0" selected>Today</option>
-            <option value="1">1 day ago</option>
-            <option value="2">2 days ago</option>
-            <option value="3">3 days ago</option>
-            <option value="4">4 days ago</option>
-            <option value="5">5 days ago</option>
-            <option value="6">6 days ago</option>
-          </select>
-        </p>
-      </div>
-      
       <ul >
-        <li ng-repeat="post in posts" class="thumbnail post-list-item">
+        <li ng-repeat="post in posts.list" class="thumbnail post-list-item">
             <img class="thumb" ng-src="{{post.thumbnail.image_url}}" alt="{{post.name}}" />           
             <div>
+                <a>{{post.name}}</a>
                 <p>{{post.tagline}}</p>
             </div>
         </li>
       </ul>
+      <div>
+          <button ng-disabled="!(posts.currentNewerPostId < posts.latestPostId)" ng-click="getNewerPostList()">Next posts</button>
+          <button ng-disabled="currentOlderPostId === 0" ng-click="getOlderPostList()">Previous posts</button>
+      </div>
 
     </div>
   </div>
