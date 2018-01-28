@@ -5,53 +5,53 @@ angular.
   module('postList').
   component('postList', {
     templateUrl: 'post-list/post-list.template.html',
-    controller: ['PostService','$scope','$log',
-      function PostListController(PostService,$scope,$log) {
+    controller: ['PostService','CommentService','appEnv','$scope','$log',
+      function PostListController(PostService,CommentService,appEnv,$scope,$log) {
           
         // Init posts structure
         $scope.posts = [];
+        
         // Get latest posts on page load
-        getPostList();
-       
-       // Function triggered on "days ago" select change 
-       $scope.getNewerPostList = function() {
-           // Retrieve newer posts (newer than the current older post) 
-           PostService.getNewerPostList($scope.posts.currentNewerPostId ).then(function(data) {
-               // Bind new list of post 
-               $scope.posts.list =data.posts;
-                // Update scope values 
-                $scope.posts.currentNewerPostId = $scope.posts.list[0].id;
-                $scope.posts.currentOlderPostId = $scope.posts.list[$scope.posts.list.length-1].id;
-            });
-        }
+        getPostList(1);
         
-        $scope.getOlderPostList = function() {
-           // Retrieve older posts (older than the current older post) 
-           PostService.getOlderPostList($scope.posts.currentOlderPostId).then(function(data) {
-                // Bind new list of post
-                $scope.posts.list =data.posts;
-                // Update scope values 
-                $scope.posts.currentNewerPostId = $scope.posts.list[0].id;
-                $scope.posts.currentOlderPostId = $scope.posts.list[$scope.posts.list.length-1].id;
+        // Pagination settings
+        $scope.pagination = {
+            currentPage: 1,
+            numPerPage :appEnv.postPerPage,
+            maxSize: 5,
+            totalPost: 1000
+        };
+        
+        // Detect chqnges in pagination
+        $scope.pageChanged = function() {
+            // Get new list of post
+            getPostList($scope.currentPage);
+        };
+        
+        // Retrieve comments
+        $scope.getComments = function(post){
+            // Get range of date to display
+            var startDate = new Date(post.created_at);
+            var endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate()+7);
+            
+            CommentService.getList(post.id).then(function(data) {
+                console.log(data.comments);
                 
+                var fiteredComment = CommentService.filterCommentsByDate(data.comments, endDate);
+                
+                console.log(fiteredComment);
             });
-        }
+        };
         
-        function getPostList(){                   
-            PostService.getList().then(function(data) {
-                console.log('Get latest posts');
+        // Get list of post
+        function getPostList(pageId){                   
+            PostService.getList(pageId).then(function(data) {s
                 console.log(data);
-                
                 // Bind list of posts
                 $scope.posts.list =data.posts;
-                // Store latest post id to disable 'next button' when the current newer post id is the latest
-                $scope.posts.latestPostId = $scope.posts.list[0].id;
-                // Update scope values 
-                $scope.posts.currentNewerPostId = $scope.posts.list[0].id;
-                $scope.posts.currentOlderPostId = $scope.posts.list[$scope.posts.list.length-1].id;;
-
             });
-        }
+        };
       }
     ]
   });
