@@ -5,15 +5,12 @@
         <li ng-repeat="post in posts.list" class="thumbnail post-list-item">
             <img class="thumb" ng-src="{{post.thumbnail.image_url}}" alt="{{post.name}}" />           
             <div>
-                <a>{{post.name}}</a>
+                <a ng-click="getComments(post)"> {{post.name}}</a>
                 <p>{{post.tagline}}</p>
             </div>
         </li>
       </ul>
-      <div>
-          <button ng-disabled="!(posts.currentNewerPostId < posts.latestPostId)" ng-click="getNewerPostList()">Next posts</button>
-          <button ng-disabled="currentOlderPostId === 0" ng-click="getOlderPostList()">Previous posts</button>
-      </div>
+      <pagination ng-change="pageChanged()" ng-model="currentPage" total-items="pagination.totalPost" max-size="pagination.maxSize" boundary-link-numbers="true" boundary-links="true"></pagination>
 
     </div>
   </div>
