@@ -7,6 +7,8 @@ angular.
 	"appEnv", {
             // Developer token provided by Product Hunt
             dev_token:"a6da618242594426b74350b7048d2022308f5a5e5e286fad05a981025382b619",
+            // define number of posts per page
+            postPerPage:'10',
             // url of PH API
             url:"https://api.producthunt.com/v1/",
             // Enable/Disable logger
