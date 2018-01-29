@@ -5,12 +5,12 @@ angular.
   module('postList').
   component('postList', {
     templateUrl: 'post-list/post-list.template.html',
-    controller: ['PostService','CommentService','appEnv','$scope','$log',
-      function PostListController(PostService,CommentService,appEnv,$scope,$log) {
+    controller: ['PostService','CommentService','appEnv','$scope','$log','$interval',
+      function PostListController(PostService,CommentService,appEnv,$scope,$log,$interval) {
           
-        // Init posts structure
+        // Init posts scope variables
         $scope.posts = [];
-        
+        $scope.comments = [];
         // Get latest posts on page load
         getPostList(1);
         
@@ -22,36 +22,40 @@ angular.
             totalPost: 1000
         };
         
-        // Detect chqnges in pagination
+        // Detect changes in pagination
         $scope.pageChanged = function() {
             // Get new list of post
-            getPostList($scope.currentPage);
+            getPostList($scope.pagination.currentPage);
         };
         
         // Retrieve comments
         $scope.getComments = function(post){
-            // Get range of date to display
+            
+            // Calculate range of date to display
             var startDate = new Date(post.created_at);
             var endDate = new Date(startDate);
-            endDate.setDate(startDate.getDate()+7);
+            endDate.setDate(startDate.getDate()+appEnv.daysNum);
+            
+            // bind for graph title
+            $scope.comments.postName = post.name;
             
             CommentService.getList(post.id).then(function(data) {
-                console.log(data.comments);
-                
-                var fiteredComment = CommentService.filterCommentsByDate(data.comments, endDate);
-                
-                console.log(fiteredComment);
+                // first get all comments and convert nested data into plain data
+                var sortedComments = CommentService.formatDataComments(data.comments);
+                // Then, select only comments created within 7 days after post creation
+                $scope.comments.list = CommentService.filterCommentsByDate(sortedComments,endDate);
+                console.log($scope.comments.list);
             });
         };
         
         // Get list of post
         function getPostList(pageId){                   
-            PostService.getList(pageId).then(function(data) {s
+            PostService.getList(pageId).then(function(data) {
                 console.log(data);
                 // Bind list of posts
                 $scope.posts.list =data.posts;
             });
         };
-      }
-    ]
+
+    }]
   });
