@@ -5,10 +5,12 @@ angular.
     // Define app constants
     constant(
 	"appEnv", {
-            // Developer token provided by Product Hunt
-            dev_token:"a6da618242594426b74350b7048d2022308f5a5e5e286fad05a981025382b619",
+            // Developer token provided by Product Hunt - Please put yours
+            dev_token:"",
             // define number of posts per page
             postPerPage:'10',
+            // Number of days after post creation to display on graph
+            daysNum:7,
             // url of PH API
             url:"https://api.producthunt.com/v1/",
             // Enable/Disable logger
