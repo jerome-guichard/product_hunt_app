@@ -7,9 +7,11 @@ angular.
   
     function PostService(appEnv,$http,$q) {
         
+        // url to API and postPerPage defined in config file
         var url = appEnv.url;
         var postPerPage = appEnv.postPerPage;
         
+        // List of service
         var service = {
             // DATA
             getList: getList     
@@ -25,7 +27,7 @@ angular.
             // http request
             $http({
                 //Endpoint: posts?all
-                //Request string: page nnumber and per_page number of post
+                //Request string: page number and per_page number of post
                 url: url+'posts/all?page='+pageId.toString()+'&per_page='+postPerPage,
                 method: 'GET',
                 }).success(function(data,status,headers,config){
