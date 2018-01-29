@@ -8,22 +8,23 @@ h1 {
   margin-top: 0;
 }
 
+/* HEADER */
 .navbar {
     background-color: #DA552F;
     color: white;
 
 }
 
- /*View: post list */
+.header-php-link{
+    color: white;
+    margin-right:20px;
+}
+
+/*POST LIST */
 
 .list-post {
   border-right: 1px solid #f0efef
 }
-/*
-.posts {
-  list-style: none;
-}*/
-
 
 .thumbnail > img, .thumbnail a > img {
     margin-right: 20px;
@@ -38,7 +39,10 @@ h1 {
     height:60px;
 }
 
-
+/*PAGINATION*/
+.pagination{
+    margin-left:60px;
+}
 
 /* D3.js Graph */
 .axis path,
