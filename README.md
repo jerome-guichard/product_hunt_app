@@ -3,7 +3,7 @@ Product Hunt Application
 
 ## Overview
 
-This application displays all the posts posted on Product Hunt.
+This application displays all the posts posted on Product Hunt and an associated graph showing comments count over time.
 
 ## Prerequisites
 
