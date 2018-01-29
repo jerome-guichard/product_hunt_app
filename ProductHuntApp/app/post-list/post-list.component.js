@@ -24,7 +24,7 @@ angular.
         
         // Detect changes in pagination
         $scope.pageChanged = function() {
-            // Get new list of post
+            // Get new list of post depending on the page
             getPostList($scope.pagination.currentPage);
         };
         
@@ -42,16 +42,16 @@ angular.
             CommentService.getList(post.id).then(function(data) {
                 // first get all comments and convert nested data into plain data
                 var sortedComments = CommentService.formatDataComments(data.comments);
-                // Then, select only comments created within 7 days after post creation
+                // Then, select only comments created within 7 days (or any constant value defined by dev in config.file) after post creation
+                // Comments are returned into an obj: {date;count}
+                // Bind comments list to directive
                 $scope.comments.list = CommentService.filterCommentsByDate(sortedComments,endDate);
-                console.log($scope.comments.list);
             });
         };
         
         // Get list of post
         function getPostList(pageId){                   
             PostService.getList(pageId).then(function(data) {
-                console.log(data);
                 // Bind list of posts
                 $scope.posts.list =data.posts;
             });
