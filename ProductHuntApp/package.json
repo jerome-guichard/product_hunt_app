@@ -1,8 +1,14 @@
 {
     "name": "ProductHuntApp",
     "version": "1.0.0",
-    "keywords": ["util", "functional", "server", "client", "browser"],
-    "description":"Product Hunt Application",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "description": "Product Hunt Application",
     "author": "jguichar",
     "repository": "https://github.com/jerome-guichard/product_hunt_app.git",
     "contributors": [],
