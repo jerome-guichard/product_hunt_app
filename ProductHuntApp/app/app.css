@@ -1,42 +1,65 @@
 body {
   padding: 20px;
+  background: #f9f9f9;
 }
 
 h1 {
-  border-bottom: 1px solid gray;
+  /*border-bottom: 1px solid gray;*/
   margin-top: 0;
 }
 
-/* View: post list */
+.navbar {
+    background-color: #DA552F;
+    color: white;
+
+}
+
+ /*View: post list */
+
+.list-post {
+  border-right: 1px solid #f0efef
+}
+/*
 .posts {
   list-style: none;
+}*/
+
+
+.thumbnail > img, .thumbnail a > img {
+    margin-right: 20px;
+    margin-left: auto;
+}
+.thumbnail .caption {
+    padding: 0px;
 }
 
-.posts li {
-  clear: both;
-  height: 115px;
-  padding-top: 15px;
+.thumb{
+    width:60px;
+    height:60px;
 }
 
-.thumb {
-  float: left;
-  height: 40px;
-  margin: -0.5em 0.5em 0 1em;
-  padding-bottom: 1em;
-  width: 40px;
+
+
+/* D3.js Graph */
+.axis path,
+.axis line{
+  fill: none;
+  stroke:black;
+  shape-rendering:crispEdge;
 }
 
-.inputs {
-    padding-left: 40px;
-    margin-bottom: 40px;
+.axis text{
+  font-family: sans-serif;
+  font-size: 10px;
+}
+.tick
+{
+  stroke-dasharray: 1, 2;
 }
 
-.header-php-link {
-    color: #bbb;
-    font-size: 14px;
-    text-align: right;
-}
-
-.header-php{
-    
+.graph-svg-component {
+    position:fixed;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px; 
 }
