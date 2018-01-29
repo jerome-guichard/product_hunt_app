@@ -8,9 +8,11 @@
         "angular-mocks": "1.5.x",
         "angular-resource": "1.5.x",
         "angular-route": "1.5.x",
+        "angular-touch": "1.5.x",
+        "angular-bootstrap":"0.13.x",
         "bootstrap": "3.3.x",
         "jquery": "2.2.x",
-        "d3": "4.12.x"
+        "d3": "3.x.x"
     },
     "devDependencies": {
     }
