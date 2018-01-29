@@ -16,14 +16,17 @@ This application displays all the posts posted on Product Hunt.
 - Get Node.js here https://nodejs.org/en/
 - Install the tool dependencies: `npm install`
 
+###
+- You also need a token from Product hunt
+- You can ask for it here : https://api.producthunt.com/v1/docs
 ### App setup
 
 - Download the app from github
 ```
-git clone 
+git clone https://github.com/jerome-guichard/product_hunt_app.git
 ```
 ```
-git checkout 
+git checkout master
 ```
 
 - Import the project into your favorite  IDE or open a console and cd .../ProductHuntApp
@@ -35,7 +38,12 @@ npm install
 ```
 bower install
 ```
+In app.config.js file, provide your token to the variable 'dev_token' 
 - Start the app:
 ```
-npm "run-script" "start"
+npm run-script start
+```
+Finally, open a browser and go to the following url:
+```
+http://localhost:8000/index.html
 ```
