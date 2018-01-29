@@ -7,7 +7,9 @@ h1 {
   /*border-bottom: 1px solid gray;*/
   margin-top: 0;
 }
-
+p{
+    color:grey;
+}
 /* HEADER */
 .navbar {
     background-color: #DA552F;
@@ -62,8 +64,11 @@ h1 {
 }
 
 .graph-svg-component {
-    position:fixed;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px; 
+}
+.chart{
+    position:fixed;
+    right:0;
 }
