@@ -2,7 +2,7 @@
 
 angular.
     module('core.graph').
-    directive('linearChart', function($parse, $window){
+    directive('stepChart', function($parse, $window){
     return{
        restrict:'EA',
        template:"<svg width='850' height='400'></svg>",
@@ -127,8 +127,6 @@ angular.
                         d: lineFun(commentCountToPlot)
                     });
             }
-
-            //drawLineChart();
         }
    };
 });
