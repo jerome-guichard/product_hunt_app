@@ -6,9 +6,10 @@ angular.
     CommentService.$inject =  ['appEnv','$http','$q'];
   
     function CommentService(appEnv,$http,$q) {
-        
+        // API url  
         var url = appEnv.url;
         
+        // List of available service
         var service = {
             // DATA
             getList: getList,
@@ -24,12 +25,8 @@ angular.
             var deferred = $q.defer();         
             // http request
             $http({
-                //Endpoint: posts?all
-                //Request string: sort posts by creation date in a descending order 
-                //Request string: limit the number of results
-                //Additional Request string: get post older/older than a given post 
-                //url: url+'comments?search[post_id]='+postId+'&sort_by=created_at&order=asc',
-                
+                //Endpoint: posts
+                // Retrieve all comments for a specific post represented by its id
                 url: url+'posts/'+postId+'/comments',
                 method: 'GET',
                 }).success(function(data,status,headers,config){
@@ -41,7 +38,9 @@ angular.
             return deferred.promise;
         }
         
-        
+        // Filter array of comments by date
+        // Do not take into account the comments created beyond the limite date 
+        // Return an array of object {date,count} for chat directive
         function filterCommentsByDate(comments,limitDate){
             
             var chartStruct = [];
@@ -62,7 +61,6 @@ angular.
         }
         
         // Comments from API are nested, we need to transform into a plain object array
-        // Side-effect : sorting in data is broken 
         function formatDataComments(comments){
             
             // Declare new array of comments
