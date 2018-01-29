@@ -16,7 +16,7 @@
 
              <pagination ng-if="posts.list.length > 0" class="text-center" ng-change="pageChanged()" ng-model="pagination.currentPage" total-items="pagination.totalPost" max-size="pagination.maxSize" boundary-link-numbers="true" boundary-links="true" previous-text="<" next-text=">" first-text="<<" last-text=">>"></pagination>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 chart" ng-if="posts.list.length > 0">
         <step-chart chart-data="comments.list"></step-chart>
     </div>
   </div>
