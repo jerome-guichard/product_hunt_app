@@ -1,21 +1,20 @@
 <div class="container-fluid">
     <div class="row">
-    <div class="list-post col-md-4">
-              
-        <ul class="posts">
-        <li ng-repeat="post in posts.list" class="thumbnail">
-            <a ng-click="getComments(post)" >
-                <img  class="thumb pull-left"  ng-src="{{post.thumbnail.image_url}}" alt="{{post.name}}" />
-            </a>
-            <div class="caption">
-                <a ng-click="getComments(post)"> {{post.name}}</a>
-                <p>{{post.tagline}}</p>
-                <p> Comments count: {{post.comments_count}}</p>
-            </div>
-        </li>
-      </ul>
-      <pagination ng-change="pageChanged()" ng-model="pagination.currentPage" total-items="pagination.totalPost" max-size="pagination.maxSize" boundary-link-numbers="true" boundary-links="true"></pagination>
+        <div class="list-post col-md-4">
+            <ul class="posts">
+                <li ng-repeat="post in posts.list" class="thumbnail">
+                    <a ng-click="getComments(post)" >
+                        <img  class="thumb pull-left"  ng-src="{{post.thumbnail.image_url}}" alt="{{post.name}}" />
+                    </a>
+                    <div class="caption">
+                        <a ng-click="getComments(post)"> {{post.name}}</a>
+                        <p>{{post.tagline}}</p>
+                        <p> Comments count: {{post.comments_count}}</p>
+                    </div>
+                </li>       
+            </ul>
 
+             <pagination ng-if="posts.list.length > 0" class="text-center" ng-change="pageChanged()" ng-model="pagination.currentPage" total-items="pagination.totalPost" max-size="pagination.maxSize" boundary-link-numbers="true" boundary-links="true" previous-text="<" next-text=">" first-text="<<" last-text=">>"></pagination>
     </div>
     <div class="col-md-8">
         <step-chart chart-data="comments.list"></step-chart>
