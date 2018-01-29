@@ -5,7 +5,6 @@
     <title>Product Hunt Posts</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="app.css" />
-    <link rel="stylesheet" href="app.animations.css" />
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -19,13 +18,14 @@
     <script src="bower_components/d3/d3.min.js"></script>
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
-    
     <script src="core/core.module.js"></script>
     
     <script src="core/post/post.module.js"></script>
     <script src="core/post/post.service.js"></script>
     <script src="core/comment/comment.module.js"></script>
     <script src="core/comment/comment.service.js"></script>
+    <script src="core/graph/graph.module.js"></script>
+    <script src="core/graph/graph.directive.js"></script>
         
     <script src="post-list/post-list.module.js"></script>
     <script src="post-list/post-list.component.js"></script>
@@ -33,15 +33,17 @@
     
   </head>
   <body>
-   <header class="header-php">
-    <div class="container">
-        <a class="" href="https://www.producthunt.com">
-            <h1 class="header-php">PHP : Product Hunt Posts</h1>
-        </a>      
-        <a class="header-php-link" href="https://www.producthunt.com">Product Hunter</a>
-    </div>
-  </header>
 
+    <header class="navbar navbar-expand navbar-light bg-faded">
+        <h1 class="navbar-brand mb-0">PHP : Product Hunt Posts</h1>
+        <ul class="nav navbar-nav navbar-right">
+        <li>
+            <span class="navbar-text">
+                <a class="header-php-link" href="https://www.producthunt.com">Product Hunter</a>
+            </span>
+        </li>
+        </ul>
+    </header>
     <div class="view-container">
       <div ng-view class="view-frame"></div>
     </div>
